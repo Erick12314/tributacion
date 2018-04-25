@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Impuesto a la Renta</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		
+		<br>
+		<br>
+		
+		<h1>Cálculo IR al Año</h1>
+		
+		<br>
+		<br>
+		
+		<a class="btn btn-primary btn-md"  href="/trabajador/lista">Lista de Trabajadores</a>
+		<a class="btn btn-primary btn-md"  href="/trabajador/calcularIR">Realizar otro cálculo</a>
+		
+		<br>
+		<br>
+		
+		<form class="form-horizontal" action="#" th:action="@{/trabajador/new}" th:object="${trabajador}" method="post">
+			
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtUIT">UIT</label>
+				
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{uit}" id="txtUIT" readonly> 
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtDni">DNI</label>
+				
+				<div class="col-md-10">
+					<input type="text" th:field="*{dni}" class="form-control" id="txtDni" readonly>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtNombre">Nombre</label>
+				
+				<div class="col-md-10">
+					<input type="text" th:field="*{nombre}" class="form-control" id="txtNombre" readonly>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtSalario">Salario Mensual</label>
+				
+				<div class="col-md-10">
+					<input type="text" th:field="*{salario}" class="form-control" id="txtSalario" readonly>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-md-2">Relación Laboral</label>
+				
+				<div class="col-md-10">
+					<label class="radio-inline"><input type="radio" th:field="*{relacion_laboral}" th:value="Dependiente" name="optradio" readonly>Dependiente</label>
+					<label class="radio-inline"><input type="radio" th:field="*{relacion_laboral}" th:value="Independiente" name="optradio" readonly>Independiente</label>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtTotalBruto">Total Bruto</label>
+				<div class="col-md-10">
+					<input type="text" th:field="*{total_bruto}" class="form-control" id="txtTotalBruto" readonly>
+				</div>
+			</div>
+	
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtTotalImpuesto">Total Impuesto</label>
+				<div class="col-md-10">
+					<input type="text" th:field="*{total_impuesto}" class="form-control" id="txtTotalImpuesto" readonly>
+				</div>
+			</div>
+	
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtTotalNeto">Total Neto</label>
+				<div class="col-md-10">
+					<input type="text" th:field="*{total_neto}" class="form-control" id="txtTotalNeto" readonly>
+				</div>
+			</div>
+			
+			<br>
+			<br>
+			
+			<div class="form-group">
+				<div class="col-md-6">
+					<input type="submit" value="Guardar" class="btn btn-success btn-block">
+				</div>
+				<div class="col-md-6">
+					<input type="reset" value="Limpiar" class="btn btn-default btn-block">
+				</div>
+			</div>			
+			
+		</form>
+	</div>
+	
+</body>
+</html>

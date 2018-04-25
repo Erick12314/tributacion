@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Impuesto a la Renta</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<br>
+		<br>
+		<h1>Proyección IR al Año</h1>
+		<br>
+		<br>
+		<a class="btn btn-primary btn-md" href="/trabajador/lista">Lista de Trabajadores</a>
+		<br>
+		<br>	
+				
+		
+		<form class="form-horizontal" action="#" th:action="@{/trabajador/calcularIR}" th:object="${trabajador}" method="post">
+			
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtUIT">UIT</label>
+				
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{uit}" id="txtUIT">
+					<span class="bg-danger text-danger" th:if="${#fields.hasErrors('uit')}"
+			    										th:errors="*{uit}">Error</span>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtDni">DNI</label>
+				
+				<div class="col-md-10">
+					<input type="text" th:field="*{dni}" class="form-control" id="txtDni">
+					<span class="bg-danger text-danger" th:if="${#fields.hasErrors('dni')}"
+			    										th:errors="*{dni}">Error</span>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtNombre">Nombre</label>
+				
+				<div class="col-md-10">
+					<input type="text" th:field="*{nombre}" class="form-control" id="txtNombre">
+					<span class="bg-danger text-danger" th:if="${#fields.hasErrors('nombre')}"
+			    										th:errors="*{nombre}">Error</span>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtSalario">Salario Mensual</label>
+				
+				<div class="col-md-10">
+					<input type="text" th:field="*{salario}" class="form-control" id="txtSalario">
+					<span class="bg-danger text-danger" th:if="${#fields.hasErrors('salario')}"
+			    										th:errors="*{salario}">Error</span>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label col-md-2">Relación Laboral</label>
+				
+				<div class="col-md-10">
+					<label class="radio-inline"><input type="radio" th:field="*{relacion_laboral}" th:value="Dependiente" name="optradio">Dependiente</label>
+					<label class="radio-inline"><input type="radio" th:field="*{relacion_laboral}" th:value="Independiente" name="optradio">Independiente</label>
+				</div>
+				<span class="bg-danger text-danger" th:if="${#fields.hasErrors('relacion_laboral')}"
+  										th:errors="*{relacion_laboral}">Error</span>
+			</div>
+			
+			<br>
+			<br>
+			
+			<div class="form-group">
+				<div class="col-md-6">
+					<input type="submit" value="Calcular" class="btn btn-success btn-block">
+				</div>
+				<div class="col-md-6">
+					<input type="reset" value="Limpiar" class="btn btn-default btn-block">
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

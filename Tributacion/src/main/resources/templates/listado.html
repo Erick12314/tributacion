@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Impuesto a la Renta</title>
+  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+</head>
+<body>
+	<br>
+	<br>
+  <div class="container">
+    <h2>Trabajadores</h2>
+    <br>
+    <br>
+    
+    <a class="btn btn-primary btn-md"  href="/trabajador/calcularIR">Nuevo Cálculo</a>
+	<br>
+	<br>
+	
+    <table class="table table-bordered">
+      <thead>
+
+        <tr>
+			<th>DNI</th>
+			<th>Nombre</th>
+			<th>Relación Laboral</th>
+			<th>Salario</th>
+			<th>UIT</th>
+			<th>Total Bruto</th>
+			<th>Total Impuesto</th>
+			<th>Total Neto</th>
+        </tr>
+      </thead>
+         
+      <tbody>
+        <tr th:each="trabajador : ${trabajadores}">
+        
+        	<td th:text="${trabajador.dni}"></td>
+        	<td th:text="${trabajador.nombre}"></td>
+        	<td th:text="${trabajador.relacion_laboral}"></td>
+        	<td th:text="${trabajador.salario}"></td>
+        	<td th:text="${trabajador.uit}"></td>
+        	<td th:text="${trabajador.total_bruto}"></td>
+        	<td th:text="${trabajador.total_impuesto}"></td>
+        	<td th:text="${trabajador.total_neto}"></td>
+        	
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</body>
+</html>
